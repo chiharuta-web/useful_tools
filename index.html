@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>投資に便利なツール集｜ちはるたが実際に使っている厳選ツール</title>
+<meta name="description" content="証券口座・家計簿・銘柄チェック・シミュレーション・AIまで。ちはるたが実際に使って“おすすめできるものだけ”を厳選したツール集。">
+<style>
+  /* ===== ベージュ／ブラウン版（雑誌風・やさしい金融トーン） ===== */
+  :root{
+    --bg:#f6efe3; --card:#fffdf8; --ink:#43352a; --ink-soft:#8c7b69; --ink-mute:#b6a88f;
+    --line:#ebe1d0; --line-soft:#f3ebde;
+    --shadow-sm:0 2px 10px rgba(78,60,42,.06); --shadow:0 8px 26px rgba(78,60,42,.10); --shadow-lg:0 22px 50px rgba(78,60,42,.18);
+    --radius:22px;
+    /* primary＝キャラメル / secondary＝ブロンズ（変数名は流用して全体を暖色化） */
+    --blue:#bb945a; --blue-deep:#9c7338; --blue-bg:#f4e9d5;
+    --green:#a98f55; --green-deep:#7f6531; --green-bg:#efe7d2;
+    --purple:#ab7048; --gold:#c89a3c; --coral:#bd6443;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{margin:0;padding:0}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic UI","Segoe UI",Meiryo,sans-serif;
+    background:
+      radial-gradient(1100px 480px at 100% -10%, #f1e4cd 0%, transparent 56%),
+      radial-gradient(880px 420px at -8% 0%, #eee3cf 0%, transparent 52%),
+      var(--bg);
+    color:var(--ink); line-height:1.75; -webkit-font-smoothing:antialiased; padding:0 0 48px;
+  }
+  .wrap{max-width:680px;margin:0 auto;padding:0 18px}
+
+  header{padding:34px 18px 4px;text-align:center}
+  .logo{display:inline-flex;align-items:center;gap:9px;font-weight:800;font-size:12px;letter-spacing:.12em;color:var(--ink-soft);
+    background:#fff;border:1px solid var(--line);padding:8px 16px;border-radius:999px;box-shadow:var(--shadow-sm)}
+  .logo .dot{width:9px;height:9px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--green))}
+  h1{font-size:clamp(25px,6.4vw,34px);line-height:1.32;margin:18px 0 10px;font-weight:800}
+  h1 .accent{background:linear-gradient(115deg,var(--blue-deep),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .lead{color:var(--ink-soft);font-size:14.5px;margin:0 auto;max-width:470px}
+
+  .howto{font-size:13.5px;color:var(--ink);background:linear-gradient(180deg,#faf3e5,#f5efe0);
+    border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:14px;padding:14px 16px;margin-top:18px;line-height:1.7}
+  .howto b{font-weight:800}
+  .howto .gloss{display:block;margin-top:7px;font-size:12px;color:var(--ink-soft)}
+
+  /* 検索＆フィルタ（固定） */
+  .bar{position:sticky;top:0;z-index:20;background:linear-gradient(var(--bg),var(--bg) 80%,transparent);padding:12px 18px 10px}
+  .bar .inner{max-width:680px;margin:0 auto}
+  .search{width:100%;border:1.6px solid var(--line);background:#fff;border-radius:13px;padding:12px 14px;font-size:15px;color:var(--ink);
+    box-shadow:var(--shadow-sm);outline:none}
+  .search:focus{border-color:var(--blue)}
+  .chips{display:flex;gap:7px;overflow-x:auto;padding:11px 2px 2px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .chips::-webkit-scrollbar{display:none}
+  .chip{flex:0 0 auto;border:1.5px solid var(--line);background:#fff;color:var(--ink-soft);font-weight:800;font-size:12.5px;
+    padding:7px 13px;border-radius:999px;cursor:pointer;transition:.15s;white-space:nowrap}
+  .chip.on{background:linear-gradient(120deg,var(--blue),var(--gold));color:#fff;border-color:transparent;box-shadow:0 4px 11px rgba(155,115,56,.30)}
+
+  .sec{display:flex;align-items:center;gap:10px;margin:24px 2px 12px}
+  .sec .ln{flex:1;height:1px;background:var(--line)}
+  .sec .lbl{display:inline-flex;align-items:center;gap:8px;font-weight:800;font-size:14px;color:var(--ink)}
+  .sec .lbl .d{width:10px;height:10px;border-radius:3px}
+
+  .tool{display:flex;align-items:center;gap:13px;text-decoration:none;color:var(--ink);background:var(--card);
+    border:1.6px solid var(--line);border-radius:16px;padding:14px 15px;margin-bottom:10px;box-shadow:var(--shadow-sm);
+    transition:transform .13s, box-shadow .16s, border-color .16s}
+  .tool:hover{transform:translateY(-2px);box-shadow:var(--shadow);border-color:#e7d8bd}
+  .tool:active{transform:scale(.99)}
+  .t-ic{flex:0 0 auto;width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:21px;background:var(--blue-bg);border:1px solid var(--line)}
+  .t-main{flex:1;min-width:0}
+  .t-name{font-size:15px;font-weight:800;line-height:1.4;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+  .lv{font-size:10.5px;font-weight:800;color:var(--ink-soft);background:var(--line-soft);border:1px solid var(--line);border-radius:999px;padding:1px 8px}
+  .price{font-size:10.5px;font-weight:800;border-radius:999px;padding:1px 8px}
+  .price.free{color:#6f7d3a;background:#edf0da}
+  .price.semi{color:#a9762f;background:#f4e7cf}
+  .t-desc{font-size:13px;color:var(--ink-soft);margin-top:4px;line-height:1.55}
+  .t-voice{font-size:12px;color:var(--blue-deep);margin-top:6px;line-height:1.5;background:var(--blue-bg);border-radius:9px;padding:6px 9px;display:inline-block}
+  .t-arr{flex:0 0 auto;align-self:center;display:inline-flex;align-items:center;color:#fff;
+    background:linear-gradient(120deg,var(--blue),var(--gold));font-weight:800;font-size:12px;padding:8px 12px;border-radius:999px;
+    white-space:nowrap;box-shadow:0 4px 10px rgba(155,115,56,.32)}
+
+  /* ちはるたセクションは少し強調 */
+  .tool.cha{border-color:#e7d8bd;background:linear-gradient(180deg,#faf3e5,#fffdf8)}
+  .badge-most{font-size:10px;font-weight:800;color:#fff;background:linear-gradient(120deg,var(--coral),#d68f4a);border-radius:999px;padding:1px 8px}
+
+  .empty{text-align:center;color:var(--ink-mute);font-size:13.5px;padding:30px 0}
+  .disc{font-size:11px;color:var(--ink-mute);text-align:center;margin-top:24px;line-height:1.7}
+  .foot{text-align:center;font-size:12px;color:var(--ink-mute);margin-top:16px;letter-spacing:.04em}
+  .hide{display:none!important}
+</style>
+</head>
+<body>
+
+<header>
+  <span class="logo"><span class="dot"></span>Money Rise｜投資の道具箱</span>
+  <h1>投資に便利な<br><span class="accent">ツール集</span></h1>
+  <p class="lead">証券口座・家計簿・銘柄チェック・シミュレーションまで。<br>ちはるたが実際に使って“おすすめできるものだけ”を厳選しました🧰</p>
+</header>
+
+<div class="wrap">
+  <div class="howto">
+    💡 <b>使い方</b>：カードをタップするとそのツールが開きます。上の検索・カテゴリで絞り込みもできます。
+    <span class="gloss">「無料」「一部有料」も表示しています。煽りません、ちはるたが自分で使ってるものだけ◎</span>
+  </div>
+</div>
+
+<div class="bar">
+  <div class="inner">
+    <input id="q" class="search" type="search" placeholder="🔍 ツール名・キーワードで探す（例：NISA、配当、家計）" oninput="render()">
+    <div class="chips" id="chips"></div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div id="list"></div>
+  <div id="empty" class="empty hide">該当するツールが見つかりませんでした🙏</div>
+
+  <p class="disc">※各サービスの最新情報・手数料・条件・取扱内容は必ず公式サイトでご確認ください。一部にPR・アフィリエイトを含む場合があります。本ツール集は教育・情報提供を目的としたもので、特定の金融商品・サービスの利用を推奨するものではありません。投資の最終判断はご自身の責任で行ってください。</p>
+  <p class="foot">©Money Rise</p>
+</div>
+
+<script>
+/* カテゴリの目印（四角）＝ベージュ背景に映る中彩度の別色で見分けやすく */
+const CATS = [
+  {key:"account", name:"口座をひらく・始める", color:"#c98a2e"},
+  {key:"kakei",   name:"家計・入金力を整える", color:"#3f9a86"},
+  {key:"shiraberu",name:"調べる・銘柄を知る", color:"#d2773f"},
+  {key:"sim",     name:"計算・シミュレーション", color:"#9d6594"},
+  {key:"kanri",   name:"管理する", color:"#5a9e52"},
+  {key:"manabu",  name:"学ぶ・公式情報", color:"#4f86b8"},
+  {key:"ai",      name:"AIを使いこなす", color:"#c5564e"},
+  {key:"chiharuta",name:"ちはるたの発信・相談", color:"#7d6cae"},
+];
+
+/* price: "free" | "semi"(一部有料)  / lv: 初級/中級 */
+const TOOLS = [
+  // 口座
+  {cat:"account", name:"楽天証券", lv:"初級", price:"free", desc:"NISA・つみたて投資の口座。", voice:"楽天ポイントでも少額から始められる。最初の1つに◎", url:"https://www.rakuten-sec.co.jp/"},
+  {cat:"account", name:"SBI証券", lv:"初級", price:"free", desc:"口座数No.1のネット証券。Vポイントが貯まる。", voice:"とにかく王道。迷ったらここでOK", url:"https://www.sbisec.co.jp/"},
+  {cat:"account", name:"moomoo証券", lv:"中級", price:"free", desc:"プロ級の分析ツール・AI機能・リアルタイム情報。日本株手数料0円。", voice:"情報量がすごい。眺めてるだけで勉強になる", url:"https://www.moomoo.com/jp"},
+  // 家計
+  {cat:"kakei", name:"マネーフォワード ME", lv:"初級", price:"semi", desc:"銀行・カードを連携して自動で家計簿。", voice:"まず“見える化”。家計の現在地がわかる", url:"https://moneyforward.com/"},
+  {cat:"kakei", name:"入金力アップ 家計見直しチェック", lv:"初級", price:"free", desc:"ちはるた製。家計のムダを1つずつ整えるチェックリスト。", voice:"投資にまわせるお金（入金力）を育てる入口に", url:"../入金力アップ家計見直しチェック/index.html", internal:true},
+  // 調べる
+  {cat:"shiraberu", name:"株探（kabutan）", lv:"中級", price:"free", desc:"ニュース・決算・株価指標をまとめてチェック。", voice:"決算やニュースを見る習慣づけに", url:"https://kabutan.jp/"},
+  {cat:"shiraberu", name:"IR BANK", lv:"中級", price:"free", desc:"企業の長期業績・配当の推移が見やすい。", voice:"配当が続いてる会社か、長い目で確認できる", url:"https://irbank.net/"},
+  {cat:"shiraberu", name:"Yahoo!ファイナンス", lv:"初級", price:"free", desc:"株価・マーケットニュースの定番。", voice:"とりあえず株価を見るならここ", url:"https://finance.yahoo.co.jp/"},
+  {cat:"shiraberu", name:"トウシル（楽天証券）", lv:"初級", price:"free", desc:"初心者向けのお金・投資の解説メディア。", voice:"記事がやさしくて読みやすい", url:"https://media.rakuten-sec.net/"},
+  {cat:"shiraberu", name:"世界の株価", lv:"初級", price:"free", desc:"日経平均・NYダウ・為替など世界の相場をリアルタイムで一覧。", voice:"朝これを見れば、世界の相場がひと目でわかる", url:"https://sekai-kabuka.com/pc-index.html"},
+  {cat:"shiraberu", name:"バフェット・コード", lv:"中級", price:"semi", desc:"企業の財務・業績・指標をまとめて分析できる。", voice:"銘柄をしっかり分析したくなったらこれ", url:"https://www.buffett-code.com/"},
+  // シミュレーション
+  {cat:"sim", name:"金融庁 つみたてシミュレーター", lv:"初級", price:"free", desc:"積立額・利回り・期間で「将来いくら？」を計算。", voice:"公的だから安心。“将来いくら”が一瞬でわかる", url:"https://www.fsa.go.jp/policy/nisa2/tsumitate-simulator/"},
+  {cat:"sim", name:"取り崩しシミュレーター（野村AM）", lv:"初級", price:"free", desc:"貯めた資産を“使う”ときの取り崩しを試算。", voice:"貯めた後にどう使うか。意外とここが大事", url:"https://www.nomura-am.co.jp/special/nomuwrap/simulation/reversal.html"},
+  // 管理
+  {cat:"kanri", name:"配当管理アプリ", lv:"初級", price:"semi", desc:"保有株を登録すると月別配当を自動で見える化。", voice:"配当が“見える”とモチベが続く", url:"https://apps.apple.com/jp/app/%E9%85%8D%E5%BD%93%E7%AE%A1%E7%90%86/id1514019363"},
+  // 学ぶ
+  {cat:"manabu", name:"金融庁 NISA特設サイト", lv:"初級", price:"free", desc:"NISA制度の正確な一次情報。", voice:"迷ったら公式。これが一番正確", url:"https://www.fsa.go.jp/policy/nisa2/"},
+  // AI
+  {cat:"ai", name:"ChatGPT", lv:"初級", price:"semi", desc:"わからない用語や疑問をその場で質問できるAI。", voice:"お金の壁打ち相手に。専門用語もやさしく解説してくれる", url:"https://chatgpt.com/"},
+  {cat:"ai", name:"Claude", lv:"初級", price:"semi", desc:"長い資料の要約や整理が得意なAI。", voice:"目論見書やニュースの要約に強い", url:"https://claude.ai/"},
+  // ちはるた
+  {cat:"chiharuta", icon:"👥", name:"LINEオープンチャット「ちはるたマネーハック研究所」", lv:"初級", price:"free", desc:"みんなでお金を学べる場。お知らせもここ。", voice:"いま一番の発信の場。まずはここへ", url:"https://line.me/ti/g2/-ZrsmAhn6pac_-o7xIdliVUL2UvgsXNaAxN-Kw?utm_source=invitation&utm_medium=link_copy&utm_campaign=default", most:true},
+  {cat:"chiharuta", icon:"💬", name:"公式LINE", lv:"初級", price:"free", desc:"お得情報や特別なお知らせを受け取れる。", voice:"オープンチャットと合わせて登録を", url:"https://utage-system.com/line/open/gkdcLZ2fh0Rw?mtid=MTA9jQPuzXck"},
+  {cat:"chiharuta", icon:"🎧", name:"Voicy（ちはるたラジオ）", lv:"初級", price:"free", desc:"お金の話を音声でゆるく配信（ラジオ）。", voice:"通勤・家事の“ながら聴き”でどうぞ", url:"https://voicy.jp/channel/972814"},
+  {cat:"chiharuta", icon:"✉️", name:"メルマガ", price:"free", desc:"SNSより深く・実践的なお金の話（メール）。", voice:"ぶっちゃけた話はここで", url:"https://utage-system.com/p/5krWpl5MoDia"},
+  {cat:"chiharuta", icon:"🎥", name:"YouTube", lv:"初級", price:"free", desc:"ショート動画＆長尺動画で発信。", voice:"動画で学びたい人はこちら", url:"https://www.youtube.com/@chiharuta_money"},
+];
+
+let activeCat = "all";
+
+function buildChips(){
+  const root=document.getElementById('chips');
+  let html=`<div class="chip on" data-cat="all" onclick="setCat('all',this)">すべて</div>`;
+  CATS.forEach(c=>{ html+=`<div class="chip" data-cat="${c.key}" onclick="setCat('${c.key}',this)">${c.name}</div>`; });
+  root.innerHTML=html;
+}
+function setCat(key,el){
+  activeCat=key;
+  document.querySelectorAll('.chip').forEach(c=>c.classList.remove('on'));
+  el.classList.add('on');
+  render();
+}
+function priceLabel(p){ return p==="free"?'<span class="price free">無料</span>':'<span class="price semi">一部有料</span>'; }
+
+function render(){
+  const q=(document.getElementById('q').value||"").trim().toLowerCase();
+  const root=document.getElementById('list');
+  let html="", shown=0;
+  CATS.forEach(c=>{
+    if(activeCat!=="all" && activeCat!==c.key) return;
+    const items=TOOLS.filter(t=>t.cat===c.key).filter(t=>{
+      if(!q) return true;
+      return (t.name+" "+t.desc+" "+t.voice).toLowerCase().includes(q);
+    });
+    if(items.length===0) return;
+    shown+=items.length;
+    html+=`<div class="sec"><span class="lbl"><span class="d" style="background:${c.color}"></span>${c.name}</span><span class="ln"></span></div>`;
+    items.forEach(t=>{
+      const most=t.most?` <span class="badge-most">最重要</span>`:"";
+      const cha=t.cat==="chiharuta"?" cha":"";
+      const tgt=t.internal?"":' target="_blank" rel="noopener"';
+      const ic=t.icon?`<div class="t-ic">${t.icon}</div>`:"";
+      html+=`<a class="tool${cha}" href="${t.url}"${tgt}>
+        ${ic}
+        <div class="t-main">
+          <div class="t-name">${t.name}${most} ${priceLabel(t.price)}</div>
+          <div class="t-desc">${t.desc}</div>
+          <div class="t-voice">💬 ちはるた：${t.voice}</div>
+        </div>
+        <div class="t-arr">開く →</div>
+      </a>`;
+    });
+  });
+  root.innerHTML=html;
+  document.getElementById('empty').classList.toggle('hide', shown>0);
+}
+
+buildChips();
+render();
+</script>
+</body>
+</html>
